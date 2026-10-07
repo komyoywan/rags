@@ -18,7 +18,7 @@ from openai import OpenAI
 # (0) 경로/환경 설정
 APP_DIR = os.path.dirname(os.path.abspath(__file__))       # ...\rag
 PROJECTS_DIR = os.path.dirname(APP_DIR)                    # ...\Projects
-ENV_PATH = os.path.join(PROJECTS_DIR, ".env")
+#ENV_PATH = os.path.join(PROJECTS_DIR, ".env")
 
 ORIGIN_DIR = os.path.join(APP_DIR, "origin")
 EMB_DIR = os.path.join(APP_DIR, "embedding")
@@ -30,7 +30,7 @@ CACHE_EMB = os.path.join(EMB_DIR, "em01.npy")                  # 임베딩 결�
 EMBED_MODEL = "text-embedding-3-small"
 CHAT_MODEL = "gpt-4o-mini"
 
-load_dotenv(ENV_PATH)
+#load_dotenv(ENV_PATH)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     raise ValueError("OPENAI_API_KEY가 Projects 폴더의 .env 파일에 설정되어 있지 않습니다.")
@@ -181,7 +181,7 @@ def ask_llm(question: str, snippets: list[str]) -> str:
 
 # (2) Streamlit UI
 st.set_page_config(page_title="RAG 매뉴얼 Q&A (Cache Regenerate)", layout="wide")
-st.title("사내 매뉴얼 Q&A ('캐시 삭제/재생성' 확장)")
+st.title("사내 매뉴얼 Q&A ('캐시 삭제/재생성' 확장) Git") 
 st.caption("버튼 클릭 시.. embedding 디렉토리를 삭제하고, company_manual01.csv 기반으로 em01.csv와 em01.npy를 재생성")
 
 # session_state 초기화
